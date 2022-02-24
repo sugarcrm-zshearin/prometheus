@@ -15,6 +15,6 @@ For this to work, there are a few things that are needed.  In our case, idm-user
 2. Apply 1-prometheus-operator-crd
 3. Apply 2-prometheus-operator
 4. Apply 3-prometheus
-5. Apply service yaml (idm-user-sync-kafka service, deployment, hpa, etc)
-6. Apply 5-prometheus-adapter/0-adapter - for this step, you may want to use different metrics to be used by your hpa.  See [here](https://github.com/kubernetes-sigs/prometheus-adapter/blob/master/docs/config.md) for more details on configmap 
+5. Apply 4-your-service after you fill out information for your service (in our case was idm-user-sync-kafka service, deployment, hpa, and servicemonitor)
+6. Apply 5-prometheus-adapter/0-adapter - for this step, you may want to use different metrics to be used by your hpa.  See [here](https://github.com/kubernetes-sigs/prometheus-adapter/blob/master/docs/config.md) for more details on configmap.  Also make sure the configmap metric you are using matches your hpa. 
 7. Apply 5-prometheus-adapter/1-custom-metrics
