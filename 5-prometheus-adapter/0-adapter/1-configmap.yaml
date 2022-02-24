@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-metrics-prometheus-adapter
+  namespace: monitoring
+  labels:
+    app: prometheus-adapter
+data:
+  config.yaml: |
+    rules:
+    - seriesQuery: 'iam_user_sync_kafka_kafka_read_write_time_seconds_sum{namespace!="",pod!=""}'
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: 'iam_user_sync_kafka_kafka_read_write_time_seconds_sum'
+        as: 'iam_user_sync_kafka_kafka_delay_seconds'
+      metricsQuery: 'sum(rate(iam_user_sync_kafka_kafka_read_write_time_seconds_sum{<<.LabelMatchers>>}[1m])/rate(iam_user_sync_kafka_kafka_read_write_time_seconds_count{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)'
