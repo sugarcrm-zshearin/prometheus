@@ -7,6 +7,7 @@ For this to work, there are a few things that are needed.  In our case, idm-user
 * Optional - hpa that uses the custom metrics.  It is not needed but not sure why this would be done in the first place if you are not using one (whole purpose is to be able to access prometheus metrics back in k8s)
 
 ## Steps to enable/deploy
+0. Create monitoring namespace with appropriate label by applying 0-namespaces
 1. Add following label to the namespace that you are monitoring (in our case it is idm):
 ```
   labels:
