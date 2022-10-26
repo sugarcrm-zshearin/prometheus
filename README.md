@@ -20,6 +20,7 @@ For this to work, there are a few things that are needed.  In our case, idm-user
 6. Apply 5-prometheus-adapter/0-adapter - for this step, you may want to use different metrics to be used by your hpa.  See [here](https://github.com/kubernetes-sigs/prometheus-adapter/blob/master/docs/config.md) for more details on configmap.  Also make sure the configmap metric you are using matches your hpa. 
 7. Apply 5-prometheus-adapter/1-custom-metrics
 
+## Exposing prometheus in minikube
 If you want to look at metrics in this local deployment and you're using minikube, I would expose the prometheus service created in the previous steps:
 ```
 kubectl expose service prometheus-operated --type=NodePort --target-port=9090 --name=prometheus-operated-np -n monitoring
