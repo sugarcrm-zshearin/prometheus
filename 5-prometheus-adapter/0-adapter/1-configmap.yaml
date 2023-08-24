@@ -18,5 +18,5 @@ data:
             resource: pod
       name:
         matches: 'minion_kafka_consumer_group_topic_lag'
-        as: 'iam_user_sync_kafka_lag'
+        as: 'minion_kafka_consumer_group_topic_lag'
       metricsQuery: 'sum(avg_over_time(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)'
