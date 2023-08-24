@@ -9,11 +9,6 @@ metadata:
 data:
   config.yaml: |
     rules:
-    - seriesQuery: 'minion_kafka_consumer_group_topic_lag{topic_name="idm.user-sync-default"}'
-      name:
-        matches: 'minion_kafka_consumer_group_topic_lag'
-        as: 'iam_user_sync_kafka_lag'
-      metricsQuery: 'sum(avg_over_time(minion_kafka_consumer_group_topic_lag{topic_name="idm.user-sync-default"}[1m]))'
     - seriesQuery: 'minion_kafka_consumer_group_topic_lag{namespace!="",pod!=""}'
       resources:
         overrides:
