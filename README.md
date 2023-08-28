@@ -14,6 +14,7 @@ For this to work, there are a few things that are needed.  In our case, idm-user
     monitoring: prometheus
 ```
 This can be done for example via `kubectl edit namespace idm` and adding `monitoring: prometheus` to the labels section of the metadata for the namespace
+
 2. Apply 1-prometheus-operator-crd
 3. Apply 2-prometheus-operator
 4. Apply 3-prometheus
