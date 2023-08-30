@@ -8,14 +8,10 @@ metadata:
     app: prometheus-adapter
 data:
   config.yaml: |
-    rules:
-    - seriesQuery: 'minion_kafka_consumer_group_topic_lag{namespace!="",pod!=""}'
+    externalRules:
+    - seriesQuery: 'minion_kafka_consumer_group_topic_lag{namespace!="", pod!=""}'
       resources:
-        overrides:
-          namespace:
-            resource: namespace
-          pod:
-            resource: pod
+        namespaced: false
       name:
         matches: 'minion_kafka_consumer_group_topic_lag'
         as: 'minion_kafka_consumer_group_topic_lag'
